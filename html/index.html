@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Know your vowel</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div style="grid-column: 1/2; grid-row: 2/3; padding-left: 10px;">
+		<p><a href="data_and_code.html" title="">Data and code</a></p>
+		<p><a href="" title="">How to cite</a></p>
+	</div>
+	<div style="grid-column: 2/3; grid-row: 1/2;">
+		<h1>A formant-based vowel classifier</h1>		
+	</div>
+	<div id="main" style="grid-column: 2/3; grid-row: 2/3;">
+		<p>Enter the values of the first two or three formants in the fields below, and the algorithm will output the most likely IPA glyph based on the information contained in <a href="http://phonetics.linguistics.ucla.edu/research/BeckerVowelCorpus.xls">Roy Becker’s vowel corpus</a> (analysed in his <a href="http://phonetics.linguistics.ucla.edu/research/RBecker_diss.pdf">dissertation</a>) together with 7&nbsp;closest phonemes from the corpus.</p>
+		<p style="margin: 0; padding: 3px;">F1: <input type="text" id="f1"></p>
+		<p style="margin: 0; padding: 3px;">F2: <input type="text" id="f2"></p>
+		<p style="margin: 0; padding: 3px; margin-bottom: 10px;">F3: <input type="text" id="f3"></p>
+		<p><input type="button" onclick="sendQuery();" value="Send query"></p>
+	</div>
+	<div style="grid-column: 3/4;"></div>
+</body>
+</html>
