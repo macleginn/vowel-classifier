@@ -8,17 +8,18 @@
 <body>
 	<div style="grid-column: 1/2; grid-row: 2/3; padding-left: 10px;">
 		<p><a href="data_and_code.html" title="">Data and code</a></p>
-		<p><a href="" title="">How to cite</a></p>
+		<p><a href="api.html" title="">Web API</a></p>
+		<p><a href="how_to_cite.html" title="">How to cite</a></p>
 	</div>
 	<div style="grid-column: 2/3; grid-row: 1/2;">
 		<h1>A formant-based vowel classifier</h1>		
 	</div>
 	<div id="main" style="grid-column: 2/3; grid-row: 2/3;">
 		<p><a href="index.html"><< Back to the main page</a></p>
-		<p>The classifier is trained on the data from Roy Becker's corpus of vowel formants. Vowels with less than 10 entries in the corpus were removed. The formant plot of the train data:</p>
-		<p><img src="images/formant_plot_min.png" alt="Formant plot of Becker's vowel data" style="width: 80%;"></p>
+		<p>Roy Becker's corpus of vowel formants was used as a reference data-set. Vowels with less than 10 entries in the corpus were removed. The formant plot of the train data:</p>
+		<p><img src="images/formant_plot_min.png" alt="Formant plot of Becker's vowel data" style="width: 90%;"></p>
 		<p>Two separate nearest-neighbour classifiers (with the number of neighbours rather arbitrarily set to 7) were trained for two-formant and three-formant queries. The <a href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier">KNeighborsClassifier</a> from the Python package <a href="http://scikit-learn.org/stable/index.html">scikit-learn</a> was used.</p>
-		<p>The classifiers are re-trained every time the program starts so you can supply your own reference data table. The code and the data are available in a GitHub repo: ... In order to start a local copy, clone the repo, install the deps using <a href="https://docs.pipenv.org/">pipenv</a> and execute the command indicated in the Procfile or run <b>heroku local</b>.</p>
+		<p>The classifiers are re-trained every time the program starts, so you can supply your own reference data table. The code and the data are available in a <a href="https://github.com/macleginn/vowel-classifier">GitHub repo</a>. In order to start a local copy, clone the repo, install the deps using <a href="https://docs.pipenv.org/">pipenv</a>, and execute the command indicated in the Procfile or run <b>heroku local</b>. (Don’t forget to modify the JavaScript in the driver site if you want to use it too.)</p>
 	</div>
 	<div style="grid-column: 3/4;"></div>
 </body>

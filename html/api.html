@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Know your vowel</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div style="grid-column: 1/2; grid-row: 2/3; padding-left: 10px;">
+		<p><a href="data_and_code.html" title="">Data and code</a></p>
+		<p><a href="api.html" title="">Web API</a></p>
+		<p><a href="how_to_cite.html" title="">How to cite</a></p>
+	</div>
+	<div style="grid-column: 2/3; grid-row: 1/2;">
+		<h1>A formant-based vowel classifier</h1>		
+	</div>
+	<div id="main" style="grid-column: 2/3; grid-row: 2/3;">
+		<p><a href="index.html"><< Back to the main page</a></p>
+		<p>The site has a simple API for automated queries: <b>https://safe-reaches-13562.herokuapp.com/?f1=XXX&amp;f2=XXX&amp;f3=XXX</b></p>
+		<p>The values of F1 and F2 are obligatory; the two-vowel classifier will be used if no value for F3 is provided. The program does not allow for batch queries (all but the first values for each formant will be disregarded). Consider setting up a local copy if you have a large data-set to process.</p>
+		<p>The response is a JSON-formatted dictionary of the following form:</p>
+		<p><pre>
+{
+  "predicted_vowel": "a",
+  "lang": {
+    "2295": "Neapolitan",
+    "1150": "Finnish",
+    "45": "Palestinian Arabic",
+    "1410": "Hadza",
+    "2829": "Russian",
+    "381": "Chickasaw",
+    "1258": "French"
+  },
+  "vowel": {
+    "2295": "a",
+    "1150": "\u00e6",
+    "45": "a",
+    "1410": "a",
+    "2829": "a",
+    "381": "a",
+    "1258": "a"
+  },
+  "f1": {
+    "2295": 604.0,
+    "1150": 578.0,
+    "45": 585.0,
+    "1410": 620.0,
+    "2829": 553.0,
+    "381": 587.0,
+    "1258": 615.0
+  },
+  "f2": {
+    "2295": 1513.0,
+    "1150": 1485.0,
+    "45": 1495.0,
+    "1410": 1485.0,
+    "2829": 1504.0,
+    "381": 1500.0,
+    "1258": 1465.0
+  },
+  "f3": {
+    "2295": 2458.452755905512,
+    "1150": 2535.0,
+    "45": 2458.452755905512,
+    "1410": 2458.452755905512,
+    "2829": 2514.0,
+    "381": 2452.0,
+    "1258": 2458.452755905512
+  }
+}</pre></p>
+	</div>
+	<div style="grid-column: 3/4;"></div>
+</body>
+</html>

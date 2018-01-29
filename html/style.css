@@ -2,5 +2,18 @@ body {
 	display: grid;
 	grid-template-columns: 150px 1fr 100px;
 	font-family: 'Inconsolata';
+	padding-bottom: 30px;
 }
 
+table.report {
+	border-collapse: collapse;
+}
+
+tr.header {
+	font-weight: bold;
+}
+
+td {
+	border: 1px dotted black;
+	padding: 7px;
+}

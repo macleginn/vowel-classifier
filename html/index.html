@@ -4,11 +4,13 @@
 	<meta charset="utf8">
 	<title>Know your vowel</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 	<div style="grid-column: 1/2; grid-row: 2/3; padding-left: 10px;">
 		<p><a href="data_and_code.html" title="">Data and code</a></p>
-		<p><a href="" title="">How to cite</a></p>
+		<p><a href="api.html" title="">Web API</a></p>
+		<p><a href="how_to_cite.html" title="">How to cite</a></p>
 	</div>
 	<div style="grid-column: 2/3; grid-row: 1/2;">
 		<h1>A formant-based vowel classifier</h1>		
@@ -20,6 +22,65 @@
 		<p style="margin: 0; padding: 3px; margin-bottom: 10px;">F3: <input type="text" id="f3"></p>
 		<p><input type="button" onclick="sendQuery();" value="Send query"></p>
 	</div>
+	<div id="results" style="grid-column: 2/3; grid-row: 3/4;"></div>
 	<div style="grid-column: 3/4;"></div>
+
+	<div style="position: fixed; bottom: 20px; left: 20px;">
+	<p>Built by<br/><a href="https://shamash.academia.edu/DmitryNikolaev">Dmitry<br/>Nikolaev</a>.</p>
+	</div>
+
+	<script>
+		var pat = /\d+/;
+		function processData(data) {
+			console.log(data);
+			var vowel = data['predicted_vowel'],
+				resDiv = $('#results');
+			resDiv.empty();
+			resDiv.append($('<p>').html('Most likely vowel: <b>[' + vowel + ']</b>'));
+			resDiv.append($('<p>').html('Reference vowels:'));
+			
+			var knn = $('<table>');
+			knn.attr('class', 'report');
+			var header = $('<tr>');
+			header.attr('class', 'header');
+			header.append($('<td>').text('Language'));
+			header.append($('<td>').text('Vowel'));
+			header.append($('<td>').text('F1'));
+			header.append($('<td>').text('F2'));
+			header.append($('<td>').text('F3'));
+			knn.append(header);
+			var f1_dic = data['f1'],
+				keys = [];
+			for (var k in f1_dic) {
+				if (pat.test(k)) {
+					keys.push(k);
+				}
+			}
+			keys.sort();
+			for (var i = 0; i < keys.length; i++) {
+				var k = keys[i],
+					r = $('<tr>');
+				r.append($('<td>').text(data['lang'][k]))
+				r.append($('<td>').text(data['vowel'][k]))
+				r.append($('<td>').text(data['f1'][k]))
+				r.append($('<td>').text(data['f2'][k]))
+				r.append($('<td>').text(data['f3'][k]));
+				knn.append(r);
+			}
+			resDiv.append(knn);
+		}
+		function sendQuery() {
+			var f1 = $('#f1').val(),
+				f2 = $('#f2').val(),
+				f3 = $('#f3').val();
+			if (pat.test(f1) && pat.test(f2)) {
+				if (pat.test(f3)) {
+					$.get('https://safe-reaches-13562.herokuapp.com/?f1=' + f1 + '&f2=' + f2 + '&f3=' + f3, processData);
+				} else {
+					$.get('https://safe-reaches-13562.herokuapp.com/?f1=' + f1 + '&f2=' + f2, processData);
+				}
+			}
+		}
+	</script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Know your vowel</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div style="grid-column: 1/2; grid-row: 2/3; padding-left: 10px;">
+		<p><a href="data_and_code.html" title="">Data and code</a></p>
+		<p><a href="api.html" title="">Web API</a></p>
+		<p><a href="how_to_cite.html" title="">How to cite</a></p>
+	</div>
+	<div style="grid-column: 2/3; grid-row: 1/2;">
+		<h1>A formant-based vowel classifier</h1>		
+	</div>
+	<div id="main" style="grid-column: 2/3; grid-row: 2/3;">
+		<p><a href="index.html"><< Back to the main page</a></p>
+		Nikolaev, Dmitry. 2018. A formant-based vowel classifier. URL: http://eurasianphonology.info/static/vowelclassifier (Accessed on <span id="date"></span>.)
+	</div>
+	<div style="grid-column: 3/4;"></div>
+	<script>
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+		var dateSpan = document.getElementById('date')
+		dateSpan.innerHTML = '' + dd + '/' + mm + '/' + yyyy;
+	</script>
+</body>
+</html>
