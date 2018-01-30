@@ -16,7 +16,7 @@
 		<h1>A formant-based vowel classifier</h1>		
 	</div>
 	<div id="main" style="grid-column: 2/3; grid-row: 2/3;">
-		<p>Enter the values of the first two or three formants in the fields below, and the algorithm will output the most likely IPA glyph based on the information contained in <a href="http://phonetics.linguistics.ucla.edu/research/BeckerVowelCorpus.xls">Roy Becker’s vowel corpus</a> (analysed in his <a href="http://phonetics.linguistics.ucla.edu/research/RBecker_diss.pdf">dissertation</a>) together with 7&nbsp;closest phonemes from the corpus.</p>
+		<p>Enter the values of the first two or three formants in the fields below, and the algorithm will output the most likely IPA glyph based on the information contained in <a href="http://phonetics.linguistics.ucla.edu/research/BeckerVowelCorpus.xls">Roy Becker’s vowel corpus</a> (analysed in his <a href="http://phonetics.linguistics.ucla.edu/research/RBecker_diss.pdf">dissertation</a>) together with 7&nbsp;closest phonemes from the corpus. (The program needs time to warm-up after a period of idleness; the first query will be slow.)</p>
 		<p style="margin: 0; padding: 3px;">F1: <input type="text" id="f1"></p>
 		<p style="margin: 0; padding: 3px;">F2: <input type="text" id="f2"></p>
 		<p style="margin: 0; padding: 3px; margin-bottom: 10px;">F3: <input type="text" id="f3"></p>
@@ -73,6 +73,9 @@
 			var f1 = $('#f1').val(),
 				f2 = $('#f2').val(),
 				f3 = $('#f3').val();
+			var resDiv = $('#results');
+			resDiv.empty();
+			resDiv.append($('<p>').text('Fetching results...').attr('class', 'blink_me'))
 			if (pat.test(f1) && pat.test(f2)) {
 				if (pat.test(f3)) {
 					$.get('https://safe-reaches-13562.herokuapp.com/?f1=' + f1 + '&f2=' + f2 + '&f3=' + f3, processData);
